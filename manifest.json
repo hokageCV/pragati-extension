@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Pragati",
+  "version": "2.0.0",
+  "description": " Add links to your Pragati account",
+  "icons": {
+    "16": "./assets/icon16.png",
+    "32": "./assets/icon32.png",
+    "48": "./assets/icon48.png",
+    "128": "./assets/icon128.png"
+  },
+  "permissions": ["activeTab", "tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "chrome_url_overrides": {
+    "newtab": "./new_tab/new_tab.html"
+  },
+  "background": {
+    "service_worker": "./background/background.js"
+  },
+  "action": {
+    "default_popup": "./popup/popup.html",
+    "default_title": "Pragati Extension",
+    "default_icon": "./assets/icon48.png"
+  }
+}
