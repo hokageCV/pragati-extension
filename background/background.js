@@ -1,5 +1,3 @@
-const extensionServerUrl = "https://fastify-extension.up.railway.app";
-
 console.log("background is running");
 
 // Onboarding page
@@ -22,29 +20,8 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
 
     chrome.storage.local.get(["ownerEmail"], async (data) => {
       const ownerEmail = data.ownerEmail;
-      console.log(
-        "🚀 ⚡ file: background.js:24 ⚡ chrome.storage.local.get ⚡ ownerEmail:",
-        ownerEmail
-      );
 
       await PostReqToServer(message.title, message.url, message.favIconUrl, ownerEmail);
     });
   }
 });
-
-// ==========================================================
-// ==========================================================
-const PostReqToServer = async (title, url, favIconUrl, ownerEmail) => {
-  try {
-    const response = await fetch(`${extensionServerUrl}/pragati`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, url, favIconUrl, ownerEmail }),
-    });
-    const data = await response.json();
-
-    return { message: "done" };
-  } catch (err) {
-    console.log(err);
-  }
-};

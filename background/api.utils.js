@@ -1,3 +1,20 @@
+const extensionServerUrl = "https://fastify-extension.up.railway.app";
+
+export const PostReqToServer = async (title, url, favIconUrl, ownerEmail) => {
+  try {
+    const response = await fetch(`${extensionServerUrl}/pragati`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, url, favIconUrl, ownerEmail }),
+    });
+    const data = await response.json();
+
+    return { message: "done" };
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // const requestGET = async (ownerEmail) => {
 //   try {
 //     const response = await fetch(`${extensionServerUrl}/pragati?owneremail=${ownerEmail}`, {
