@@ -1,4 +1,3 @@
-// const AUTH_URL = "http://localhost:4000";
 import { AUTH_URL } from "../../constants.mjs";
 import { initParticleAnimation } from "./onboard.animate.js";
 
