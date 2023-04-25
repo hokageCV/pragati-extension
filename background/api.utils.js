@@ -1,4 +1,5 @@
-const extensionServerUrl = "https://fastify-extension.up.railway.app";
+// const extensionServerUrl = "https://fastify-extension.up.railway.app";
+import { extensionServerUrl } from "../constants.mjs";
 
 export const PostReqToServer = async (title, url, favIconUrl, ownerEmail) => {
   try {
