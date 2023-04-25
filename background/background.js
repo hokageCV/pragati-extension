@@ -1,4 +1,5 @@
 console.log("background is running");
+import { PostReqToServer } from "./api.utils.js";
 
 // Onboarding page
 chrome.runtime.onInstalled.addListener(async (e) => {
@@ -13,11 +14,10 @@ chrome.runtime.onInstalled.addListener(async (e) => {
   }
 });
 
-// listen for messages from popup
+// listen for messages
 chrome.runtime.onMessage.addListener(async (message, sender) => {
+  // from popup
   if (message.command === "add bookmark") {
-    console.log("full message is: ", message);
-
     chrome.storage.local.get(["ownerEmail"], async (data) => {
       const ownerEmail = data.ownerEmail;
 
