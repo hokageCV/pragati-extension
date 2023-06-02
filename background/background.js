@@ -5,6 +5,7 @@ import { PostReqToServer } from "./api.utils.js";
 chrome.runtime.onInstalled.addListener(async (e) => {
   if (e.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     await chrome.storage.local.set({ isOnboarded: false });
+    await chrome.storage.local.set({ bookmarkList: [] });
 
     chrome.tabs.create({
       url: "./background/onboard/onboard.html", //this path has to be relative to root directory
@@ -22,6 +23,16 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
       const ownerEmail = data.ownerEmail;
 
       await PostReqToServer(message.title, message.url, message.favIconUrl, ownerEmail);
+
+      chrome.storage.local.get(["bookmarkList"], async (data) => {
+        const bookmarkList = data.bookmarkList;
+        bookmarkList.push({
+          title: message.title,
+          url: message.url,
+          favIconUrl: message.favIconUrl,
+        });
+        await chrome.storage.local.set({ bookmarkList });
+      });
     });
   }
 });
