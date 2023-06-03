@@ -27,3 +27,18 @@ export const requestGET = async (ownerEmail) => {
     console.log(err);
   }
 };
+
+export const requestDELETE = async (owneremail, title) => {
+  try {
+    const response = await fetch(
+      `${extensionServerUrl}/pragati?owneremail=${owneremail}&title=${title}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    return { message: "done" };
+  } catch (err) {
+    console.log(err);
+  }
+};

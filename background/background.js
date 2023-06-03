@@ -1,5 +1,5 @@
 console.log("background is running");
-import { PostReqToServer } from "./api.utils.js";
+import { PostReqToServer, requestDELETE } from "./api.utils.js";
 
 // Onboarding page
 chrome.runtime.onInstalled.addListener(async (e) => {
@@ -34,5 +34,8 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
         await chrome.storage.local.set({ bookmarkList });
       });
     });
+  }
+  if (message.command === "delete bookmark") {
+    requestDELETE(message.owneremail, message.title);
   }
 });
