@@ -4,21 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Bookmarks</title>
     <link rel="stylesheet" href="./popup.css" />
-    <title>Popup</title>
   </head>
   <body>
     <nav>
       <p>Pragati</p>
     </nav>
     <main class="flexed">
-      <label for="bookmark" class="popupOption flexed">
-        <button id="bookmarkBtn">Add Bookmark</button>
+      <label for="bookmarkList" class="popupOption flexed">
+        <button id="listBtn"><a href="./popup.html">Go Back</a></button>
       </label>
-      <label class="popupOption flexed">
-        <button id="listBtn"><a href="./bookmarkList.html">All Bookmark</a></button>
-      </label>
+      <ul id="bookmarkList" class="popupOption flexed"></ul>
     </main>
   </body>
-  <script type="module" src="./popup.js"></script>
+  <script type="module" src="./bookmarkList.js"></script>
 </html>
