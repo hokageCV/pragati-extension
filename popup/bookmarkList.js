@@ -1,4 +1,5 @@
-const bookmarkDiv = document.getElementById("bookmarkList");
+const bookmarkDiv = document.getElementById("bookmarkDiv");
+// bookmarkDiv.classList.add("bookmarkDiv");
 
 document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.local.get(["ownerEmail"], async (data) => {
